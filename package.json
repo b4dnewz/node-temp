@@ -1,0 +1,60 @@
+{
+  "name": "@b4dnewz/temp",
+  "version": "0.0.1",
+  "description": "A node utility to handle temporary files and folders",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run lint",
+    "prebuild": "npm run test",
+    "lint": "tslint -p . --fix",
+    "test": "jest",
+    "test:cover": "jest --coverage",
+    "build": "tsc"
+  },
+  "author": {
+    "name": "b4dnewz",
+    "email": "filippo@codekraft.it",
+    "url": "https://b4dnewz.github.io/"
+  },
+  "repository": "b4dnewz/node-temp",
+  "license": "MIT",
+  "keywords": [
+    "temp",
+    "temporary",
+    "tempfile",
+    "file",
+    "filename",
+    "random",
+    "mock",
+    "mocking",
+    "testing",
+    "test-utils",
+    "test-utilities",
+    "test-tools",
+    "string",
+    "buffer",
+    "stream"
+  ],
+  "dependencies": {
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.1",
+    "@types/jest": "^24.0.20",
+    "@types/node": "^12.11.7",
+    "coveralls": "^3.0.7",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
