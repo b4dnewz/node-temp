@@ -82,9 +82,9 @@ A very deep documentation with real world usage examples is coming soon, stay tu
 
 [MIT](./LICENSE) © [Filippo Conti](https://b4dnewz.github.io/)
 
-[npm-image]: https://badge.fury.io/js/%40b4dnewz%2Fnode-temp.svg
+[npm-image]: https://badge.fury.io/js/%40b4dnewz%2Ftemp.svg
 [npm-url]: https://npmjs.org/package/@b4dnewz/temp
-[travis-image]: https://travis-ci.org/b4dnewz/temp.svg?branch=master
+[travis-image]: https://travis-ci.org/b4dnewz/node-temp.svg?branch=master
 [travis-url]: https://travis-ci.org/b4dnewz/node-temp
 [coveralls-image]: https://coveralls.io/repos/b4dnewz/node-temp/badge.svg
 [coveralls-url]: https://coveralls.io/r/b4dnewz/node-temp
