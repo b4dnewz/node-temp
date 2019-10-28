@@ -1,9 +1,9 @@
 import fs from "fs-extra";
-import temp, {FileAsync} from "../src";
+import * as temp from "../src";
 
 describe("FileAsync", () => {
 
-    let file: FileAsync;
+    let file: temp.FileAsync;
 
     const fileContent = "test";
     const fileOptions = {
@@ -35,6 +35,11 @@ describe("FileAsync", () => {
         await expect(file.content({
             encoding: "base64",
         })).resolves.toEqual(result);
+    });
+
+    it("should clear the file content", async () => {
+        await file.empty();
+        await expect(file.content()).resolves.toEqual("");
     });
 
     it("should remove itself", async () => {

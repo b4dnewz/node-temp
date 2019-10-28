@@ -1,11 +1,11 @@
 import fs from "fs-extra";
 import path from "path";
 import {promisify} from "util";
-import temp, {DirAsync} from "../src";
+import * as temp from "../src";
 
 describe("DirAsync", () => {
 
-    let dir: DirAsync;
+    let dir: temp.DirAsync;
 
     const dirOptions = {
         mode: "0755",

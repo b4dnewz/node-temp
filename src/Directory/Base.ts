@@ -1,6 +1,14 @@
 import fs from "fs";
 import path from "path";
-import {FileAsync, FileSync} from "../File";
+
+export interface DirWriteOptions {
+    mode?: string | number;
+}
+
+export interface DirectoryOptions {
+    dirpath: string;
+    options: DirWriteOptions;
+}
 
 export abstract class Directory {
     public readonly name: string;
@@ -21,9 +29,19 @@ export abstract class Directory {
 
     }
 
+    /**
+     * Create a temporary file inside the directory
+     */
     public abstract file(content?: any, options?: any): any;
 
+    /**
+     * Clear the directory content
+     */
     public abstract empty(force: boolean);
+
+    /**
+     * Remove the directory and all it's content
+     */
     public abstract remove();
 
     protected getUntrackedFiles() {

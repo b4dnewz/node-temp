@@ -1,9 +1,9 @@
 import fs from "fs-extra";
-import temp, {FileSync} from "../src";
+import * as temp from "../src";
 
 describe("FileSync", () => {
 
-    let file: FileSync;
+    let file: temp.FileSync;
 
     const fileContent = "test";
     const fileOptions = {

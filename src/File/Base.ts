@@ -2,9 +2,13 @@ import {ReadOptions} from "fs-extra";
 import path from "path";
 
 export abstract class File {
+
     public readonly name: string;
+
     public readonly path: string;
+
     public readonly dirname: string;
+
     public readonly options: any;
 
     constructor({
@@ -33,6 +37,9 @@ export abstract class File {
      */
     public abstract content(opts?: ReadOptions);
 
+    /**
+     * Remove the file from the system
+     */
     public abstract remove();
 
 }

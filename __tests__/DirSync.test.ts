@@ -1,10 +1,10 @@
 import fs from "fs-extra";
 import path from "path";
-import temp, {DirSync} from "../src";
+import * as temp from "../src";
 
 describe("DirSync", () => {
 
-    let dir: DirSync;
+    let dir: temp.DirSync;
 
     const dirOptions = {
         mode: "0755",
