@@ -1,6 +1,6 @@
 {
   "name": "@b4dnewz/temp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node utility to handle temporary files and folders",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
