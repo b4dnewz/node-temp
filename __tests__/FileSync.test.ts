@@ -21,8 +21,8 @@ describe("FileSync", () => {
     it("should set properties", () => {
         expect(file).toMatchObject({
             name: expect.any(String),
-            path: expect.any(String),
             options: fileOptions,
+            path: expect.any(String),
         });
     });
 
@@ -45,6 +45,16 @@ describe("FileSync", () => {
     it("should remove itself", () => {
         file.remove();
         expect(fs.existsSync(file.path)).toBeFalsy();
+    });
+
+    it("should allow custom file name", () => {
+        const filename = "avatar.png";
+        file = temp.fileSync(fileContent, {
+            name: filename,
+        });
+        expect(file.name).toEqual(filename);
+        expect(file.path).toMatch(new RegExp(`\\b${filename}$`));
+        file.remove();
     });
 
 });
