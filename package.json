@@ -15,7 +15,8 @@
     "test": "jest",
     "test:cover": "jest --coverage",
     "build": "tsc",
-    "docs:build": "typedoc"
+    "docs:build": "typedoc",
+    "docs:publish": "sh deploy.sh"
   },
   "author": {
     "name": "b4dnewz",

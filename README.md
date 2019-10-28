@@ -17,7 +17,7 @@ npm install @b4dnewz/temp
 Load inside your project all together or separate functions.
 
 ```typescript
-import temp from "@b4dnewz/temp";
+import * as temp from "@b4dnewz/temp";
 // or
 import {file, fileSync, dir, dirSync} from "@b4dnewz/temp";
 ```
@@ -62,7 +62,7 @@ tmpDir.remove()
 
 ## Documentation
 
-A very deep documentation with real world usage examples is coming soon, stay tuned.
+This project provide an [online documentation](https://b4dnewz.github.io/node-temp/) automatically generated with [TypeDoc](), but a very deep documentation with __real world usage examples__ is coming soon, stay tuned.
 
 ---
 
