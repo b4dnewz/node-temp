@@ -15,7 +15,10 @@
     "test": "jest",
     "test:cover": "jest --coverage",
     "build": "tsc",
-    "docs:build": "typedoc",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "npm run docs:build:api && npm run docs:build:site",
+    "docs:build:site": "vuepress build docs",
+    "docs:build:api": "typedoc",
     "docs:publish": "sh deploy.sh"
   },
   "author": {
@@ -55,7 +58,8 @@
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "typedoc": "^0.15.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "vuepress": "^1.2.0"
   },
   "publishConfig": {
     "access": "public"

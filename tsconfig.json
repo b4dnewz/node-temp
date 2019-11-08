@@ -11,8 +11,9 @@
     "src/**/*.ts"
   ],
   "typedocOptions": {
+    "readme": "none",
     "mode": "file",
-    "out": "docs",
+    "out": "docs/.vuepress/public/api",
     "excludePrivate": true
   }
 }
