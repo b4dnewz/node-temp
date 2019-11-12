@@ -25,6 +25,9 @@ export abstract class File {
             ...options,
         };
 
+        // Automatically track and remove
+        tracker.track(this.path);
+
     }
 
     /**

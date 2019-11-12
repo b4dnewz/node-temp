@@ -5,7 +5,7 @@ class Tracker {
     /**
      * Boolean flag used to know when the tracking is
      * active or manually stopped by the script
-    */
+     */
     private isActive: boolean = true;
 
     private garbageSet = new Set<string>();

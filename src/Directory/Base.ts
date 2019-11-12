@@ -28,6 +28,9 @@ export abstract class Directory {
             ...options,
         };
 
+        // Automatically track and remove
+        tracker.track(this.path);
+
     }
 
     /**

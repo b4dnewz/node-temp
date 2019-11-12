@@ -1,6 +1,6 @@
-import {tempPath} from "../utils";
-import {FileAsync} from "./FileAsync";
-import {FileSync} from "./FileSync";
+import { tempPath } from "../utils";
+import { FileAsync } from "./FileAsync";
+import { FileSync } from "./FileSync";
 
 interface WriteOptions {
     encoding?: string | null;
@@ -37,7 +37,7 @@ export async function file(content: any = "", options: FileWriteOptions = {}) {
  * @param options Optional file write options
  */
 export function fileSync(content: any = "", options: FileWriteOptions = {}) {
-    const {name, base, parent} = options;
+    const { name, base, parent } = options;
     return new FileSync({
         content,
         filepath: tempPath(options),
