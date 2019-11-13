@@ -42,6 +42,12 @@ describe("FileSync", () => {
         expect(file.content()).toEqual("");
     });
 
+    it("should update the file content", () => {
+        const newContent = "some-content";
+        file.setContent(newContent);
+        expect(file.content()).toEqual(newContent);
+    });
+
     it("should remove itself", () => {
         file.remove();
         expect(fs.existsSync(file.path)).toBeFalsy();

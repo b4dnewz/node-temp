@@ -1,5 +1,12 @@
-import { ReadOptions, WriteFileOptions } from "fs-extra";
+import { WriteFileOptions } from "fs-extra";
 import path from "path";
+
+export type ReadFileOptions = {
+    flag?: string,
+} | {
+    encoding: string;
+    flag?: string;
+};
 
 export interface FileWriteOptions extends WriteFileOptions {
     name?: string;
@@ -43,10 +50,14 @@ export abstract class File {
     public abstract empty();
 
     /**
-     * Return the file content with
-     * desired read options
+     * Return the file content with desired read options
      */
-    public abstract content(opts?: ReadOptions);
+    public abstract content(opts?: ReadFileOptions);
+
+    /**
+     * Updates the file content
+     */
+    public abstract setContent(data: any, opts?: WriteFileOptions);
 
     /**
      * Remove the file from the system

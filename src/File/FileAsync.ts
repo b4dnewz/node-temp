@@ -1,6 +1,10 @@
-import fs, { ReadOptions } from "fs-extra";
-import { File, FileConstructor } from "./Base";
+import fs, { WriteFileOptions } from "fs-extra";
+import { File, FileConstructor, ReadFileOptions } from "./Base";
 
+/**
+ * Creates a temporary file handler 
+ * which uses async file system functions
+ */
 export class FileAsync extends File {
     constructor(args: FileConstructor) {
         super(args);
@@ -15,8 +19,17 @@ export class FileAsync extends File {
         return fs.truncate(this.path, 0);
     }
 
-    public content(opts?: ReadOptions) {
+    public content(opts?: ReadFileOptions) {
+        const { encoding, flag } = this.options;
         return fs.readFile(this.path, {
+            encoding,
+            flag,
+            ...opts,
+        });
+    }
+
+    public setContent(data: any, opts?: WriteFileOptions) {
+        return fs.writeFile(this.path, data, {
             ...this.options,
             ...opts,
         });

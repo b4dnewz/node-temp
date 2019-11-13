@@ -42,6 +42,12 @@ describe("FileAsync", () => {
         await expect(file.content()).resolves.toEqual("");
     });
 
+    it("should update the file content", async () => {
+        const newContent = "some-content";
+        await file.setContent(newContent);
+        await expect(file.content()).resolves.toEqual(newContent);
+    });
+
     it("should remove itself", async () => {
         await file.remove();
         expect(fs.existsSync(file.path)).toBeFalsy();

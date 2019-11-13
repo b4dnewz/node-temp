@@ -1,10 +1,14 @@
-import fs, { ReadOptions, WriteFileOptions } from "fs-extra";
-import { File, FileConstructor } from "./Base";
+import fs, { WriteFileOptions } from "fs-extra";
+import { File, FileConstructor, ReadFileOptions } from "./Base";
 
 export interface FileSyncContructor extends FileConstructor {
     content: any;
 }
 
+/**
+ * Creates a temporary file handler
+ * which uses sync file system functions
+ */
 export class FileSync extends File {
     constructor(args: FileSyncContructor) {
         super(args);
@@ -18,10 +22,17 @@ export class FileSync extends File {
         fs.truncateSync(this.path, 0);
     }
 
-    public content(opts?: ReadOptions) {
+    public content(opts?: ReadFileOptions) {
         return fs.readFileSync(this.path, {
-           ...this.options,
-           ...opts,
+            ...this.options,
+            ...opts,
+        });
+    }
+
+    public setContent(data: any, opts?: WriteFileOptions) {
+        fs.writeFileSync(this.path, data, {
+            ...this.options,
+            ...opts,
         });
     }
 
