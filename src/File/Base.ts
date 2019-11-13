@@ -1,5 +1,6 @@
 import { WriteFileOptions } from "fs-extra";
 import path from "path";
+import { tracker } from "../tracking";
 
 export type ReadFileOptions = {
     flag?: string,
@@ -42,6 +43,9 @@ export abstract class File {
             ...options,
         };
 
+        // Automatically track and remove
+        tracker.track(this.path);
+
     }
 
     /**
@@ -63,5 +67,24 @@ export abstract class File {
      * Remove the file from the system
      */
     public abstract remove();
+
+    /**
+     * Add the file to the tracked files that are
+     * automatically removed when process exit or fail
+     */
+    public track() {
+        tracker.track(this.path, true);
+        return this;
+    }
+
+    /**
+     * Remove the file from the tracked files that are
+     * automatically removed when process exit or fail
+     * this is useful when want the file to be kept
+     */
+    public untrack() {
+        tracker.untrack(this.path);
+        return this;
+    }
 
 }

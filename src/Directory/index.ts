@@ -1,7 +1,7 @@
-import {tempPath} from "../utils";
-import {DirWriteOptions} from "./Base";
-import {DirAsync} from "./DirAsync";
-import {DirSync} from "./DirSync";
+import { tempPath } from "../utils";
+import { DirWriteOptions } from "./Base";
+import { DirAsync } from "./DirAsync";
+import { DirSync } from "./DirSync";
 
 export * from "./DirSync";
 export * from "./DirAsync";

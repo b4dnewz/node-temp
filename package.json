@@ -46,6 +46,7 @@
     "fs-extra": "^8.1.0"
   },
   "devDependencies": {
+    "@b4dnewz/process-test": "^0.1.0",
     "@types/fs-extra": "^8.0.1",
     "@types/jest": "^24.0.20",
     "@types/node": "^12.11.7",

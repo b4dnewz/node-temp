@@ -1,7 +1,7 @@
 import fs from "fs-extra";
-import {FileAsync} from "../File";
-import {tempPath} from "../utils";
-import {Directory} from "./Base";
+import { FileAsync } from "../File";
+import { tempPath } from "../utils";
+import { Directory } from "./Base";
 
 export class DirAsync extends Directory {
     protected files: FileAsync[] = [];

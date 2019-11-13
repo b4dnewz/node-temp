@@ -1,7 +1,7 @@
 import fs from "fs-extra";
-import {FileSync} from "../File";
-import {tempPath} from "../utils";
-import {Directory} from "./Base";
+import { FileSync } from "../File";
+import { tempPath } from "../utils";
+import { Directory } from "./Base";
 
 export class DirSync extends Directory {
 

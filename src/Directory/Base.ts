@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { tracker } from "../tracking";
 
 export interface DirWriteOptions {
     mode?: string | number;
@@ -27,6 +28,9 @@ export abstract class Directory {
             ...options,
         };
 
+        // Automatically track and remove
+        tracker.track(this.path);
+
     }
 
     /**
@@ -44,6 +48,29 @@ export abstract class Directory {
      */
     public abstract remove();
 
+    /**
+     * Add the directory to the tracked directories that are
+     * automatically removed when process exit or fail
+     */
+    public track() {
+        tracker.track(this.path, true);
+        return this;
+    }
+
+    /**
+     * Remove the directory from the tracked directories that are
+     * automatically removed when process exit or fail
+     * this is useful when want the directory to be kept
+     */
+    public untrack() {
+        tracker.untrack(this.path);
+        return this;
+    }
+
+    /**
+     * Get the directory files that hasn't been created
+     * from the module and are potentially dangerous to remove
+     */
     protected getUntrackedFiles() {
         const files = fs.readdirSync(this.path);
         const trackedFiles = this.files.map((f) => f.name);
