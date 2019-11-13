@@ -2,7 +2,7 @@ import fs, { WriteFileOptions } from "fs-extra";
 import { File, FileConstructor, ReadFileOptions } from "./Base";
 
 /**
- * Creates a temporary file handler 
+ * Creates a temporary file handler
  * which uses async file system functions
  */
 export class FileAsync extends File {
