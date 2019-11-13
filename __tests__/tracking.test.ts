@@ -1,6 +1,7 @@
 import { fork } from "@b4dnewz/process-test";
 import fs from "fs-extra";
 import path from "path";
+import { fileSync } from "../src";
 import { tracker } from "../src/tracking";
 
 const rndStr = () => Math.random().toString(36).substr(2);
@@ -15,15 +16,15 @@ const run = (name: string) => fork(
     [],
     {
         cwd: path.resolve(__dirname, ".."),
-        execArgv: ["-r", "ts-node/register"]
-    }
+        execArgv: ["-r", "ts-node/register"],
+    },
 );
 
 describe("tracking", () => {
 
     describe("unit", () => {
         it("should add values to tracker set", () => {
-            const len = 4
+            const len = 4;
             for (let i = 0; i < len; i++) {
                 tracker.track(rndStr());
             }
@@ -100,6 +101,17 @@ describe("tracking", () => {
         // increase timeout since ts-node may take some time
         jest.setTimeout(10000);
 
+        it("should add file path to garbage set", () => {
+            const tmpFile = fileSync().track();
+            expect(tracker.content()).toContain(tmpFile.path)
+        });
+
+        it("should remove file path to garbage set", () => {
+            const tmpFile = fileSync().untrack();
+            expect(tracker.content()).not.toContain(tmpFile.path);
+            tmpFile.remove();
+        });
+
         it("should remove file on process exit", (done) => {
             run("remove-file")
                 .expect("code", 0)
@@ -112,7 +124,7 @@ describe("tracking", () => {
                     expect(fs.existsSync(filePath)).toBeFalsy();
                     done(err);
                 });
-        })
+        });
 
         it("should manually track file and remove on process exit", (done) => {
             run("remove-file-2")
@@ -126,7 +138,7 @@ describe("tracking", () => {
                     expect(fs.existsSync(filePath)).toBeFalsy();
                     done(err);
                 });
-        })
+        });
 
         it("should keep file on process exit", (done) => {
             run("keep-file")
@@ -142,7 +154,7 @@ describe("tracking", () => {
                     fs.removeSync(filePath);
                     done(err);
                 });
-        })
+        });
 
         it("should manually untrack file and keep on exit", (done) => {
             run("keep-file-2")
@@ -158,8 +170,8 @@ describe("tracking", () => {
                     fs.removeSync(filePath);
                     done(err);
                 });
-        })
+        });
 
-    })
+    });
 
 });
