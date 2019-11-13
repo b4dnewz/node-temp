@@ -1,8 +1,8 @@
-import fs, {ReadOptions} from "fs-extra";
-import {File} from "./Base";
+import fs, { ReadOptions } from "fs-extra";
+import { File, FileConstructor } from "./Base";
 
 export class FileAsync extends File {
-    constructor(args) {
+    constructor(args: FileConstructor) {
         super(args);
     }
 
@@ -17,8 +17,8 @@ export class FileAsync extends File {
 
     public content(opts?: ReadOptions) {
         return fs.readFile(this.path, {
-           ...this.options,
-           ...opts,
+            ...this.options,
+            ...opts,
         });
     }
 

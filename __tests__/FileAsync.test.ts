@@ -8,13 +8,13 @@ describe("FileAsync", () => {
     const fileContent = "test";
     const fileOptions = {
         encoding: "utf-8",
-        mode: "0666",
+        mode: 0o666,
     };
 
     beforeAll(async () => {
         file = await temp.file(fileContent, {
             encoding: "utf-8",
-            mode: "0666",
+            mode: 0o666,
         });
     });
 

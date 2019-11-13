@@ -1,10 +1,14 @@
-import fs, {ReadOptions} from "fs-extra";
-import {File} from "./Base";
+import fs, { ReadOptions, WriteFileOptions } from "fs-extra";
+import { File, FileConstructor } from "./Base";
+
+export interface FileSyncContructor extends FileConstructor {
+    content: any;
+}
 
 export class FileSync extends File {
-    constructor(args) {
+    constructor(args: FileSyncContructor) {
         super(args);
-        const {content} = args;
+        const { content } = args;
 
         fs.ensureDirSync(this.dirname);
         fs.writeFileSync(this.path, content, this.options);

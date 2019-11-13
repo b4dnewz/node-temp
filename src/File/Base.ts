@@ -1,5 +1,16 @@
-import {ReadOptions} from "fs-extra";
+import { ReadOptions, WriteFileOptions } from "fs-extra";
 import path from "path";
+
+export interface FileWriteOptions extends WriteFileOptions {
+    name?: string;
+    base?: string;
+    parent?: string;
+}
+
+export interface FileConstructor {
+    filepath: string;
+    options?: FileWriteOptions;
+}
 
 export abstract class File {
 
@@ -9,12 +20,12 @@ export abstract class File {
 
     public readonly dirname: string;
 
-    public readonly options: any;
+    public readonly options: FileWriteOptions;
 
     constructor({
         filepath,
         options,
-    }) {
+    }: FileConstructor) {
 
         this.name = path.basename(filepath);
         this.path = filepath;
